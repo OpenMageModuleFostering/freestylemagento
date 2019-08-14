@@ -241,32 +241,6 @@ extends Mage_Catalog_Model_Product_Api
     {
         return (bool) count(array_filter(array_keys($array), 'is_string'));
     }
-private function serializeArray($attributeCode, $attributeData) {
-        if ($attributeCode == 'group_price' || $attributeCode == 'tier_price') {
-            return $attributeData;
-        }
-        if (is_array($attributeData) && !$this->is_assoc($attributeData)) {
-            //return json_encode($attributeData,JSON_FORCE_OBJECT);  //serialize the data
-            $returnJson = '';
-            try {
-                $returnJson = json_encode($attributeData, JSON_FORCE_OBJECT);  //serialize the data
-            } catch (Exception $ex) {
-                Mage::log('[EXCEPTION] - Error Serializing: ' . serialize($attributeCode) . "; " . serialize($attributeData) . "; Product Id: " . (string) $this->productId, 1, 'freestyle.log');
-                if (version_compare(phpversion(), '5.3.0', '>='))
-                    Mage::log('JSON ERROR = ' . json_last_error(), 1, 'freestyle.log');
-                Mage::log('Message: ' . $ex->getMessage() . ' In: ' . $ex->getFile() . '::' . $ex->getLine());
-                $returnJson = serialize($attributeData);
-            }
-            return $returnJson;
-        }
-        else {
-            return $attributeData;
-        }
-    }
-
-    private function is_assoc($array) {
-        return (bool) count(array_filter(array_keys($array), 'is_string'));
-    }
 
     private function jsonizeOption($option) 
     {

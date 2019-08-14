@@ -13,7 +13,7 @@
 <config>
     <modules>
         <Freestyle_Advancedexport>
-            <version>1.4.1</version>
+            <version>1.4.2</version>
         </Freestyle_Advancedexport>
     </modules>
     <adminhtml>
