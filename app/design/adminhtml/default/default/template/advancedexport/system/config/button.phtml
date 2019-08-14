@@ -1,0 +1,27 @@
+<script type="text/javascript">
+    //<![CDATA[
+
+    function check() {
+        if(confirm('Please save configuration prior to testing.\n'+'Perform test connection?')){
+            new Ajax.Request('<?php echo $this->getAjaxCheckUrl() ?>', {
+                method:     'get',
+                onSuccess: function(transport){
+                
+                if (transport.responseText){
+                    var data = transport.responseText.evalJSON();
+                    showMessage(data.message, data.type);
+                }
+                
+                //location.reload();
+                }
+            });
+        }
+    }
+    function showMessage(txt, type) {
+        var html = '<ul class="messages"><li class="'+type+'-msg"><ul><li>' + txt + '</li></ul></li></ul>';
+        $('messages').update(html);
+    }    
+    //]]>
+</script>
+
+<?php echo $this->getButtonHtml() ?>

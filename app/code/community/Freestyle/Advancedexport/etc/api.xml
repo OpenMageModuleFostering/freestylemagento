@@ -1,0 +1,166 @@
+<config>
+<!--
+/************************************************************************
+  © 2013,2014, 2015 Freestyle Solutions.   All rights reserved.
+  FREESTYLE SOLUTIONS, DYDACOMP, FREESTYLE COMMERCE, and all related logos 
+  and designs are trademarks of Freestyle Solutions (formerly known as Dydacomp)
+  or its affiliates.
+  All other product and company names mentioned herein are used for
+  identification purposes only, and may be trademarks of
+  their respective companies.
+************************************************************************/
+-->
+    <api>
+        <resources>
+            <advancedexport translate="title" module="advancedexport">
+                <title>Advanced Export Resource</title>
+                <acl>advancedexport</acl>
+                <model>advancedexport/api</model>
+                <methods>
+                    <startexport translate="title" module="advancedexport">
+                        <title>Start Export Process</title>
+                        <acl>advancedexport/startexport</acl>
+                    </startexport>
+                    <getentityxml translate="title" module="advancedexport">
+                        <title>Gets XML for specific Entity</title>
+                        <acl>advancedexport/getentityxml</acl>
+                    </getentityxml>     
+                    <getentityqueue translate="title" module="advancedexport">
+                        <title>Gets Entity Queue</title>
+                        <acl>advancedexport/getentityqueue</acl>
+                    </getentityqueue>
+                    <getextensionprofile translate="title" module="advancedexport">
+                        <title>Gets Extension Profile</title>
+                        <acl>advancedexprt/getextensionprofile</acl>
+                    </getextensionprofile>          
+                </methods>
+                <faults module="advancedexport">
+                    <data_invalid>
+                        <code>101</code >
+                        <message>Invalid Export parameters. Details in error message.</message>
+                    </data_invalid>
+                </faults>
+            </advancedexport>	
+            <fsorder translate="title" module="advancedexport">
+                <title>Order Resource</title>               
+                <model>freestyle_utilities/order_api</model>
+                <acl>fsorder</acl>
+                <methods>
+                    <!-- INDIVIDUAL CALLS -->
+                    <!--
+                    <caninvoice translate="title" module="order">
+                        <title>Check Invoice Availability of an Order</title>
+                        <acl>fsorder/caninvoice</acl>
+                    </caninvoice>
+                    <canship translate="title" module="order">
+                        <title>Check Shipping Availability of an Order</title>
+                        <acl>fsorder/canship</acl>
+                    </canship>
+                    <cancreditmemo translate="title" module="order">
+                        <title>Check Refund Availability of an Order</title>
+                        <acl>fsorder/cancreditmemo</acl>
+                    </cancreditmemo>
+                    -->
+                    <checkactions translate="title" module="advancedexport">
+                        <title>Check Invoicing, Shipping, Refund Action Availability of an [Order].</title>
+                        <acl>fsorder/checkactions</acl>
+                    </checkactions>
+                </methods>
+                <faults module="advancedexport">
+                    <data_invalid>
+                        <code>100</code>
+                        <message>Invalid order data. Details in error message.</message>
+                    </data_invalid>
+                    <filter_invalid>
+                        <code>101</code>
+                        <message>Invalid filters specfified.  Details in error message.</message>
+                    </filter_invalid>
+                    <not_exists>
+                        <code>102</code>
+                        <message>Order does not exist.</message>
+                    </not_exists>
+                    <not_deleted>
+                        <code>103</code>
+                        <message>Order was not deleted.  Details in error message.</message>
+                    </not_deleted>
+                </faults>
+            </fsorder>
+            <fsinvoice>
+                <title>Invoice Resource</title>
+                <acl>fsinvoice</acl>
+                <model>freestyle_utilities/invoice_api</model>
+                <methods>
+                    <cancapture translate="title" module="advancedexport">
+                        <title>Check Capture Ability of an Invoice</title>
+                        <acl>fsinvoice/cancapture</acl>
+                    </cancapture>
+                </methods>
+                <faults module="advancedexport">
+                    <data_invalid>
+                        <code>100</code>
+                        <message>Invalid invoice data. Details in error message.</message>
+                    </data_invalid>
+                    <filter_invalid>
+                        <code>101</code>
+                        <message>Invalid filters specfified.  Details in error message.</message>
+                    </filter_invalid>
+                    <not_exists>
+                        <code>102</code>
+                        <message>Invoice does not exist.</message>
+                    </not_exists>
+                    <not_deleted>
+                        <code>103</code>
+                        <message>Invoice was not deleted.  Details in error message.</message>
+                    </not_deleted>                    
+                </faults>
+            </fsinvoice>
+        </resources>
+        <acl>
+            <resources>
+                <advancedexport translate="title" module="advancedexport">
+                    <title>Freestyle</title>
+                    <startexport translate="title" module="advancedexport">
+                        <title>Start Export</title>
+                    </startexport>
+                    <getentityxml>
+                        <title>Get Entity Xml</title>
+                    </getentityxml>
+                    <getentityqueue>
+                        <title>Get Entity Queue</title>
+                    </getentityqueue>
+                    <getextensionprofile>
+                        <title>Get Extension Profile</title>
+                    </getextensionprofile>
+                    <sort_order>9997</sort_order>
+                </advancedexport>
+                <fsorder translate="title" module="advancedexport">
+                    <title>Freestyle Utilities - Order</title>
+                    <!-- INDIVIDUAL CALLS -->
+                    <!--
+                    <caninvoice translate="title" module="order">
+                        <title>Check Invoice Availability of an Order</title>
+                    </caninvoice>
+                    <canship translate="title" module="order">
+                        <title>Check Shipping Availability of an Order</title>
+                    </canship>
+                    <cancreditmemo translate="title" module="order">
+                        <title>Check Refund Availability of an Order</title>
+                    </cancreditmemo>
+                    -->
+                    <checkactions translate="title" module="advancedexport">
+                        <title>Check Invoicing, Shipping, Refund Action Availability of an [Order].</title>
+                    </checkactions>
+                    <sort_order>9998</sort_order>
+                </fsorder>
+                <fsinvoice translate="title" module="advancedexport">
+                    <title>Freestyle Utilities - Invoice</title>
+                    <cancapture translate="title" module="advancedexport">
+                        <title>Check Capture Ability of an Invoice</title>
+                    </cancapture> 
+                    <sort_order>9999</sort_order>                   
+                </fsinvoice>
+                		 
+            </resources>
+        </acl>
+    </api>
+</config>

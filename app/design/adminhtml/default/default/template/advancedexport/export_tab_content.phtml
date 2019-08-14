@@ -1,0 +1,188 @@
+<?php
+$lastExportData = $this->getLastExportData();
+//echo '<pre>'; print_r($lastExportData->getData()); echo '</pre>';
+$isPassiveEnabled = $this->getIsPassiveEnabled();
+$helper = Mage::Helper('advancedexport');
+$cShowPassiveGui = $helper->getEnablePassiveGui();
+?>
+<?php echo $this->getForm()->toHtml(); ?>
+<div class="entry-edit-head">
+    <h4 class="icon-head head-edit-form fieldset-legend">Process Actions</h4>
+</div>
+<div class="fieldset" id="generalProcess">
+    <div class="hor-scroll">
+        <table cellspacing="0" class="form-list exportTable">
+            <tbody>
+                <tr>
+                    <td>
+                        <button id="generateButton" title="Submit" type="button" onclick="submitExport()" class="scalable">
+                            <span>Generate Export Files</span>
+                        </button>
+                    </td>
+                    <td>
+                        <div style="text-align: center; display:none;" id="waitExport">
+                            <img width="20px" height="20px" src="<?php echo $this->getSkinUrl() . 'advancedexport/wait.gif' ?>" />
+                            <br>
+                            <span><strong>Please Wait... Don't close this page.</strong></span>
+                        </div>
+                    </td>
+                    <td>
+                        <button id="deleteFilesButton" title="Submit" type="button" onclick="deleteConfirm('Are you sure you want to do this?', '<?php echo $this->getDeleteUrl() ?>')" class="scalable delete">
+                            <span>Delete All Files In Export Folder</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="entry-edit-head">
+    <h4 class="icon-head head-edit-form fieldset-legend">Files from the Last Export : Date <?php echo $lastExportData->getExportDate() ?></h4>
+</div>
+<div class="fieldset" id="generalProcess">
+    <div class="hor-scroll">
+        <table cellspacing="0" class="form-list historyTable">
+            <tbody>
+                <tr>
+                    <td colspan="2">
+                        <table id="orderFiles" class="areaOrderFiles">
+                            <?php
+                            $counter = 1;
+                            $oneThere = false;
+                            if ($lastExportData->getCreatedFiles()) {
+                                $baseUrl = Mage::getStoreConfig('web/secure/base_url');
+                                foreach ($lastExportData->getCreatedFiles() as $one) {
+                                    $fileName = trim($one);
+                                    if ($helper->getIsFileExist($fileName)) {
+                                        $oneThere = true;
+                                        echo '<tr><td>';
+                                        echo $counter++ . '. <a href="' . $baseUrl . $helper->getExportfolder() . DS . $fileName . '">' . $fileName . '</a>';
+                                        echo '&nbsp;&nbsp;&nbsp;&nbsp;[To Save File:  Right-click the link >> Save As]</td></tr>';
+                                    }else
+                                        $oneThere = false;
+                                }
+                            } else {
+                                echo 'No file(s) created. Please check \'Errors\' column in Export History Tab';
+                            }
+                            if (!$oneThere) {
+                                echo 'No file(s) created. Might have been deleted.';
+                            }
+                            unset($baseUrl);
+                            ?>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="entry-edit-head">
+    <h4 class="icon-head head-edit-form fieldset-legend">Resend Order To Freestyle</h4>
+</div>
+<div class="fieldset" id="orderResendNotify">
+    <div class="hor-scroll">
+        <table cellspacing="0" class="form-list historyTable">
+            <tbody>
+                <tr>
+                    <td>
+                        <input type="text" id="notifyIncrementId" name="notifyIncrementId" value="">
+                        <input type="hidden" id="resendnotification" name="resendnotification" value="no_action">
+                        <label for="notifyIncrementId">Magento Order Increment ID</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button id="passiveEnBtn" title="Submit" type="button" onclick="ResendNotitfication()" >
+                            <span style="">Resend Notification To Freestyle</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<?php if($cShowPassiveGui=='1'):?>
+<div class="entry-edit-head">
+    <h4 class="icon-head head-edit-form fieldset-legend">Log Data:</h4>
+</div>
+<div class="fieldset" id="generalProcess">
+    <div class="hor-scroll">
+        <textarea name="logdata" id="logdata" rows="20" cols="145" class="textarea">
+<?php echo $helper->readLogFile(); ?>
+        </textarea>
+    </div>
+</div>
+<?php endif; //if($cShowPassiveGui=='1'):?>
+<div class="entry-edit-head">
+    <h4 class="icon-head head-edit-form fieldset-legend">Version and Build Date:</h4>
+</div>
+<div class="fieldset" id="generalProcess">
+    <div class="hor-scroll">
+        <p>Version: <?php echo $helper->getExtensionVersion(); ?> Build Version: <?php echo $helper->getBuildDate(); ?></p>
+    </div>
+</div>
+
+<script>
+    //<![CDATA[
+    function submitExport() {
+        if (editForm.validate()) {
+            $('edit_form').submit();
+            $('waitExport').show();
+        }
+    }
+    
+    function SendNotitfication() {
+
+        $('sendnotification').value = 'sendnotify';
+        $('edit_form').submit();
+        $('waitExport').show();
+
+    }
+    
+    function ResendNotitfication() {
+
+        $('resendnotification').value = 'sendnotify';
+        $('edit_form').submit();
+        $('waitExport').show();
+
+    }
+    /*
+    function SendOneQueueItem(idToSend)
+    {
+        new Ajax.Request('<?php echo $helper->getAjaxSendUrl() ?>'+'id/'+idToSend, {
+            method:     'get',
+            onSuccess: function(transport){
+
+            if (transport.responseText){
+                //alert(transport.responseText);
+                //var data = eval("(" + transport.responseText + ")");
+                var data = transport.responseText.evalJSON();
+                showMessage(data.message, data.type);
+            }
+
+            //location.reload();
+            }
+        });
+    }
+    function showMessage(txt, type) {
+        var html = '<ul class="messages"><li class="'+type+'-msg"><ul><li>' + txt + '</li></ul></li></ul>';
+        $('messages').update(html);
+    }
+    */
+    //]]>    
+</script>
+
+<style>
+    .exportTable td {
+        padding: 10px 100px 0px 10px;
+    }
+    .historyTable td {
+        padding: 10px 100px 0px 0px;
+    }
+    .areaOrderFiles {
+        width:100%;
+        height: 50px;
+    }
+
+</style>

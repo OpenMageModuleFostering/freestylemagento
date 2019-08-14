@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Freestyle_Advancedexport>
+            <active>true</active>
+            <codePool>community</codePool>
+        </Freestyle_Advancedexport>
+    </modules>
+</config>

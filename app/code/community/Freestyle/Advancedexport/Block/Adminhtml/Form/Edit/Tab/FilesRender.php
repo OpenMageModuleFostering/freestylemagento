@@ -1,0 +1,44 @@
+<?php
+/************************************************************************
+  © 2013,2014, 2015 Freestyle Solutions.   All rights reserved.
+  FREESTYLE SOLUTIONS, DYDACOMP, FREESTYLE COMMERCE, and all related logos 
+  and designs are trademarks of Freestyle Solutions (formerly known as Dydacomp)
+  or its affiliates.
+  All other product and company names mentioned herein are used for
+  identification purposes only, and may be trademarks of
+  their respective companies.
+************************************************************************/
+
+class Freestyle_Advancedexport_Block_Adminhtml_Form_Edit_Tab_FilesRender 
+    extends Mage_Adminhtml_Block_Widget_Grid_Column_Renderer_Abstract
+{
+
+    public function render(Varien_Object $row)
+    {
+        $value = $row->getData($this->getColumn()->getIndex());
+        $arr = unserialize($value);
+        $str = '';
+        $helper = Mage::Helper('advancedexport');
+
+        $baseUrl = Mage::getStoreConfig('web/secure/base_url');
+        if ($arr) {
+            foreach ($arr as $key => $one) {
+                unset($key);
+                $fileName = trim($one);
+                if ($helper->getIsFileExist($fileName)) {
+                    $str.='<span><a href="' . $baseUrl . 
+                          $helper->getExportfolder() . DS . $fileName . '">' . 
+                            $fileName . '</a></span><br>';
+                } else {
+                    $str.='<span>' . $fileName . ' - <span style="font-weight'
+                        . ':bold; color:red;">deleted</span>' . '</span><br>';
+                }
+            }
+        }
+
+        unset($fileName);
+        unset($baseUrl);
+
+        return $str;
+    }
+}

@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!-- 
+/************************************************************************
+  © 2013,2014, 2015 Freestyle Solutions.   All rights reserved.
+  FREESTYLE SOLUTIONS, DYDACOMP, FREESTYLE COMMERCE, and all related logos 
+  and designs are trademarks of Freestyle Solutions (formerly known as Dydacomp)
+  or its affiliates.
+  All other product and company names mentioned herein are used for
+  identification purposes only, and may be trademarks of
+  their respective companies.
+************************************************************************/
+-->
+<layout version="0.1.0">	
+    <advancedexport_adminhtml_index_index> 
+        <reference name="left">
+            <block type="advancedexport/adminhtml_form_export_tabs" name="advancedexport_tabs"></block>
+        </reference>
+        <reference name="content">
+            <block type="advancedexport/adminhtml_form_export_edit" name="advancedexport.edit" ></block>
+        </reference>
+    </advancedexport_adminhtml_index_index>
+</layout>

@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<!--
+/************************************************************************
+  © 2013,2014, 2015 Freestyle Solutions.   All rights reserved.
+  FREESTYLE SOLUTIONS, DYDACOMP, FREESTYLE COMMERCE, and all related logos 
+  and designs are trademarks of Freestyle Solutions (formerly known as Dydacomp)
+  or its affiliates.
+  All other product and company names mentioned herein are used for
+  identification purposes only, and may be trademarks of
+  their respective companies.
+************************************************************************/
+-->
+<config>
+    <menu>
+        <freestyle_advancedexport translate="title" module="advancedexport">
+            <title>Freestyle</title>
+            <sort_order>70</sort_order>
+            <children>                
+                <exportblock translate="title">
+                    <title>Advanced Export</title>
+                    <!-- <action>advancedexport/adminhtml_index</action> -->
+                    <action>adminhtml/advancedexport/index</action>
+                </exportblock>           
+            </children>
+        </freestyle_advancedexport>    
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    
+                    
+                    <freestyle_advancedexport translate="title" module="advancedexport">
+                        <title>Freestyle Menu</title>
+                        <sort_order>9999</sort_order>
+                        <children>                
+                            <exportblock translate="title">
+                                <title>Advanced Export</title>
+                            </exportblock>           
+                        </children>
+                    </freestyle_advancedexport>    
+                                     
+                    
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <freestyle_advancedexport>
+                                        <title>Freestyle Advanced Export</title>
+                                        <sort_order>10</sort_order>
+                                    </freestyle_advancedexport>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+
+</config>

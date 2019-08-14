@@ -1,0 +1,16 @@
+{
+    "name": "OpenMageModuleFostering/FreestyleMagento",
+    "type": "magento-module",
+    "license": "Custom-License",
+    "homepage": "",
+    "description": "Integrates Magento to Freestyle SaaS platform",
+    "authors": [
+    {
+        "name": "John Canare",
+        "email": "developer@freestylesolutions.com"
+    }
+],
+    "suggest": {
+        "magento-hackathon/magento-composer-installer": "*"
+    }
+}

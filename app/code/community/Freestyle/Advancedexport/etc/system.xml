@@ -1,0 +1,354 @@
+<?xml version="1.0"?>
+<!--
+/************************************************************************
+  © 2013,2014, 2015 Freestyle Solutions.   All rights reserved.
+  FREESTYLE SOLUTIONS, DYDACOMP, FREESTYLE COMMERCE, and all related logos 
+  and designs are trademarks of Freestyle Solutions (formerly known as Dydacomp)
+  or its affiliates.
+  All other product and company names mentioned herein are used for
+  identification purposes only, and may be trademarks of
+  their respective companies.
+************************************************************************/
+-->
+<config>
+    <tabs>
+        <freestyle translate="label">
+            <label>Freestyle</label>
+            <sort_order>200</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+        </freestyle>
+    </tabs>
+    <sections>
+        <freestyle_advancedexport translate="label" module="advancedexport">
+            <label>Advanced Export</label>
+            <tab>freestyle</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>10</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <settings>
+                    <label>Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <!-- <comment><![CDATA[<span class="notice"><strong>All fields are required</strong></span>]]></comment> -->
+                    <fields>
+                        <is_enabled>
+                            <label>Enable Extension</label>
+                            <source_model>adminhtml/system_config_source_yesno</source_model> 
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <!-- <source_model>adminhtml/system_config_source_enabledisable</source_model> -->
+                            <frontend_type>select</frontend_type>
+                            <sort_order>11</sort_order>
+                        </is_enabled>
+                        <!--
+                        <export_path>
+                            <label>Export Folder Path</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>12</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </export_path>
+                        -->
+                        <chanel_id>
+                            <label><![CDATA[Channel Id <span class="required">*</span>]]></label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>13</sort_order>
+                            <show_in_default>0</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <validate>required-entry</validate>
+                        </chanel_id>
+                        <chanel_name>
+                            <label><![CDATA[Channel Name <span class="required">*</span>]]></label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>14</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <validate>validate-length maximum-length-6 required-entry</validate>
+                            <comment><![CDATA[Max Length = 6]]></comment>
+                        </chanel_name>
+                        <memory_limit>
+                            <label><![CDATA[Memory Limit in Megabytes <span class="required">*</span>]]></label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <validate>validate-digits validate-greater-than-zero required-entry</validate>
+                        </memory_limit>    
+                        <cutoff_date>
+                            <label><![CDATA[Order Date Cut Off]]></label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>advancedexport/adminhtml_system_config_date</frontend_model>
+                            <sort_order>16</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>       
+                            <validate>validate-date</validate>                     
+                        </cutoff_date>
+                        <enable_passive_gui>
+                            <label><![CDATA[Show Advanced UI]]></label>
+                            <source_model>adminhtml/system_config_source_yesno</source_model> 
+                            <!-- <source_model>adminhtml/system_config_source_enabledisable</source_model> -->
+                            <frontend_type>select</frontend_type>
+                            <sort_order>17</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>                            
+                        </enable_passive_gui>
+                        <product_send_images>
+                            <label><![CDATA[Send Image Data with Products]]></label>
+                            <source_model>adminhtml/system_config_source_yesno</source_model> 
+                            <!-- <source_model>adminhtml/system_config_source_enabledisable</source_model> -->
+                            <frontend_type>select</frontend_type>
+                            <sort_order>18</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>                              
+                        </product_send_images>                                                                                                
+                    </fields>
+                </settings>
+                <queue>
+                    <label>Freestyle Queueing Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>15</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>   
+                    <fields>
+                        <enable_queue>
+                            <label>Use Queueing</label>
+                            <source_model>adminhtml/system_config_source_yesno</source_model> 
+                            <!-- <source_model>adminhtml/system_config_source_enabledisable</source_model> -->
+                            <frontend_type>select</frontend_type>
+                            <sort_order>16</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </enable_queue>    
+                        <send_async>
+                            <label>Send Async</label>
+                            <source_model>adminhtml/system_config_source_yesno</source_model> 
+                            <!-- <source_model>adminhtml/system_config_source_enabledisable</source_model> -->
+                            <frontend_type>select</frontend_type>
+                            <sort_order>17</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </send_async>                               
+                        <ignore_api>
+                            <label>Ignore Calls to Magento API</label>
+                            <source_model>adminhtml/system_config_source_yesno</source_model> 
+                            <!-- <source_model>adminhtml/system_config_source_enabledisable</source_model> -->
+                            <frontend_type>select</frontend_type>
+                            <sort_order>19</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </ignore_api>
+                        <queuebatchsize>
+                            <label>Async Queue Batch Size</label>
+                            <backend_model>Freestyle_Advancedexport_Model_Queuebatchsize</backend_model>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>18</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <validate>validate-digits validate-greater-than-zero required-entry</validate>                            
+                        </queuebatchsize>       
+                        <queue_service_url>
+                            <label><![CDATA[Queue Service URL <span class="required">*</span>]]></label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <validate>validate-url required-entry</validate>
+                        </queue_service_url>    
+                        <send_order_dependencies>
+                            <label>Send Order Dependencies</label>
+                            <source_model>adminhtml/system_config_source_yesno</source_model> 
+                            <!-- <source_model>adminhtml/system_config_source_enabledisable</source_model> -->
+                            <frontend_type>select</frontend_type>
+                            <sort_order>21</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </send_order_dependencies>                                                                
+                    </fields>            
+                </queue>
+                <api>
+                    <label>Freestyle Connection Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>13</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <!-- <comment><![CDATA[<span class="notice"><strong>All fields are required</strong></span>]]></comment> -->
+                    <fields>
+                        <api_username>
+                            <label><![CDATA[Username <span class="required">*</span>]]></label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>11</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <validate>required-entry</validate>
+                        </api_username>
+                        <api_password>
+                            <label><![CDATA[Password <span class="required">*</span>]]></label>
+                            <frontend_type>obscure</frontend_type> 
+                            <!-- <frontend_type>password</frontend_type> -->
+                            <backend_model>adminhtml/system_config_backend_encrypted</backend_model>
+                            <sort_order>12</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <validate>required-entry</validate>
+                        </api_password>
+                        <api_authorization_url>
+                            <label><![CDATA[Authentication Service URL <span class="required">*</span>]]></label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>13</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <validate>validate-url required-entry</validate>
+                        </api_authorization_url>
+                        <api_service_url>
+                            <label><![CDATA[Notification Service URL <span class="required">*</span>]]></label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>14</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <validate>validate-url required-entry</validate>
+                        </api_service_url>
+                        <test_connection translate="label">
+                            <label><![CDATA[&nbsp;]]></label>
+                            <frontend_type>button</frontend_type>
+                            <frontend_model>advancedexport/adminhtml_system_config_form_button</frontend_model>
+                            <sort_order>21</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </test_connection>
+                        <test_notes>
+                            <label><![CDATA[&nbsp;]]></label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>Freestyle_Advancedexport_Block_Adminhtml_Notes</frontend_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>                              
+                        </test_notes>                                                
+                    </fields>
+                </api>
+                <version_info>
+                    <label>Version Info</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>                    
+                    <fields>                        
+                        <advancedexport_version>
+                            <label>Version</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>Freestyle_Advancedexport_Block_Adminhtml_Version</frontend_model>
+                            <sort_order>16</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>                            
+                        </advancedexport_version>    
+                        <advancedexport_build>
+                            <label>Compatible with Freestyle Build:</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>Freestyle_Advancedexport_Block_Adminhtml_Builddate</frontend_model>
+                            <sort_order>17</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>                            
+                        </advancedexport_build>                          
+                    </fields>
+                </version_info>
+                <debug>
+                    <label>Debug (WARNING: Developer use only)</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>30</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>                    
+                    <fields>
+                        <curl_use_proxy>
+                            <label>Enable cURL Proxy</label>
+                             <source_model>adminhtml/system_config_source_yesno</source_model> 
+                            <!-- <source_model>adminhtml/system_config_source_enabledisable</source_model> -->
+                            <frontend_type>select</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>                               
+                        </curl_use_proxy>
+                        <curl_proxy_ip>
+                            <label><![CDATA[Proxy IP]]></label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>31</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </curl_proxy_ip>
+                        <curl_proxy_port>
+                            <label><![CDATA[Proxy Port]]></label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>32</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </curl_proxy_port>                                     
+                        <curl_proxy_login>
+                            <label><![CDATA[Proxy Login]]></label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>33</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </curl_proxy_login>
+                        <curl_proxy_pass>
+                            <label><![CDATA[Proxy Password]]></label>
+                            <frontend_type>obscure</frontend_type> 
+                            <backend_model>adminhtml/system_config_backend_encrypted</backend_model>
+                            <sort_order>34</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </curl_proxy_pass>
+                        <curl_verify_peer>
+                            <label>Verify SSL Peer</label>
+                             <source_model>adminhtml/system_config_source_yesno</source_model> 
+                            <!-- <source_model>adminhtml/system_config_source_enabledisable</source_model> -->
+                            <frontend_type>select</frontend_type>
+                            <sort_order>35</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>                               
+                        </curl_verify_peer>
+                        
+                    </fields>                
+                </debug>
+            </groups>
+        </freestyle_advancedexport>
+    </sections>
+
+</config>
